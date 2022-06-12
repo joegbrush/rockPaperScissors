@@ -1,26 +1,40 @@
-function computerPlay() {
-    let x = Math.random();
-    if(x < .33){
-        return "Rock";
-    } else if(x < .66){
-        return "Paper";
-    }else{
-        return "Scissors";
-    }
-};
+//Globals
+const choices = ["rock","paper","scissors"];
 
-// Play a round
+function game() {
+    playRound();
+}
+//Play a round
+function playRound() {
+    const playerSelection = playerChoice();
+    const compSelection = compChoice();
+    console.log(compSelection);
+}
 
-let playerSelection;
-let computerSelection;
+//Get player choice
+function playerChoice(){
+    let input = prompt("Type rock, paper, or scissors.");
+    while(input == null){
+        input = prompt("Type rock, paper, or scissors.");
+    };
+        input = input.toLowerCase();
+        let check = validateInput(input);
+        while(check == false){
+            input = prompt("Type rock, paper, or scissors. Exact spelling is required.")
+            input = input.toLowerCase();
+            check = validateInput(input);
+        }
+    console.log(input);
+}
 
-function gamePlay(playerSelection, computerSelection) { 
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase(); 
-   
-    if(playerSelection == 'rock' && computerSelection == 'paper'){
-       return "You lose, paper beats rock.";
-    }
-};
+//Get computer choice
+function compChoice(){
+    return choices[Math.floor(Math.random()* choices.length)]
+}
 
+//Validate input
+function validateInput(choice){
+    return choices.includes(choice)
+}
 
+game();
