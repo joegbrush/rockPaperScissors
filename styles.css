@@ -1,0 +1,15 @@
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+button{
+    height: 50px;
+    width: 100px;
+    color: yellowgreen;
+    background-color: blue;
+    border-radius: 5px;
+}
+button:hover{
+    cursor: pointer;
+}

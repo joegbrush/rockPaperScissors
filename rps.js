@@ -1,56 +1,82 @@
-//Globals
-const choices = ["rock","paper","scissors"];
-// Start game
-function game() {
-    playRound();
+const choices = ["rock", "paper", "scissors"];
+let winner;
+let winTotal = [];
+let playerScore = [];
+let compScore = [];
+let tieScore = [];
+
+function game(){
+    for(let i = 1; i < 6; i++){
+        playRound();
+    }    
+    console.log(`Player score: ${playerScore.length}`);
+    console.log(`Computer score: ${compScore.length}`);
+    console.log(`Tie: ${tieScore.length}`);
+    let totalGames = tieScore.length + playerScore.length + compScore.length;
+    console.log(`Total games: ${totalGames}`);
 }
 
-//Play a round
+
 function playRound() {
     const playerSelection = playerChoice();
-    const compSelection = compChoice();
+    const compSelection = computerChoice();
     console.log(compSelection);
-    const winner = checkWinner(playerSelection, compSelection);
+    roundWinner(playerSelection, compSelection);
     console.log(winner);
+    results(winner);
+
 }
 
-//Get player choice
-function playerChoice(){
+function playerChoice() {
     let input = prompt("Type rock, paper, or scissors.");
-    input = input.toLowerCase();
     while(input == null){
         input = prompt("Type rock, paper, or scissors.");
     };
-        let check = validateInput(input);
-        while(check == false){
-            input = prompt("Type rock, paper, or scissors. Exact spelling is required.")
-            input = input.toLowerCase();
-            check = validateInput(input);
-        }
+    input = input.toLowerCase();
+    let check = validateInput(input);
+    while (check == false){
+        input = prompt("Type rock, paper, or scissors. Exact spelling required.");
+        while(input == null){
+            input = prompt("Type rock, paper, or scissors.");
+        };
+        input = input.toLowerCase();
+        check = validateInput(input);
+    };
     console.log(input);
+    return input;
 }
 
-//Get computer choice
-function compChoice(){
-    return choices[Math.floor(Math.random()* choices.length)]
-
+function computerChoice(){
+    return choices[Math.floor(Math.random() * choices.length)];
 }
 
-//Validate input
-function validateInput(choice){
-    return choices.includes(choice)
-}
-
-function checkWinner(choiceP, choiceC){
-    if(choiceP === choiceC){
-        return "Tie"
-    }else if((choiceP === "rock" && choiceC === "scissors") || 
-            (choiceP === "paper" && choiceC === "rock") || 
-            (choiceP === "scissors" && choiceC === "paper")){
-            return "Player"
+function validateInput(x) {
+    if(choices.includes(x)){
+        return true;
     }else{
-        return "Computer"
+        return false;
+    }    
+}
+
+function roundWinner(choiceP, choiceC ){
+    if(choiceP == choiceC){
+        winner = "Tie"
+    }else if(choiceP == "rock" && choiceC == "scissors" ||
+            choiceP == "paper" && choiceC == "rock" ||
+            choiceP == "scissors" && choiceC == "paper"){
+            winner = "Player"
+    }else{
+        winner = "Computer";
+    }
+    return winner;
+}
+
+function results(x){
+    if(x == "Tie"){
+        tieScore.push(x)
+    }else if(x == "Player"){
+        playerScore.push(x);
+    }else{
+        compScore.push(x);
     }
 }
-
-game();
