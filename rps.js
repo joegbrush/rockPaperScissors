@@ -1,11 +1,11 @@
 const choices = ["rock", "paper", "scissors"];
-let winner;
+let winnerOfRound;
 let winTotal = [];
 let playerScore = [];
 let compScore = [];
 let tieScore = [];
 
-function game(){
+function gamePlay(){
     for(let i = 1; i < 6; i++){
         playRound();
     }    
@@ -18,16 +18,16 @@ function game(){
 
 
 function playRound() {
-    const playerSelection = playerChoice();
-    const compSelection = computerChoice();
+    const playerSelection = getPlayerChoice();
+    const compSelection = getComputerChoice();
     console.log(compSelection);
-    roundWinner(playerSelection, compSelection);
-    console.log(winner);
-    results(winner);
+    getWinnerOfRound(playerSelection, compSelection);
+    console.log(winnerOfRound);
+    getGameResults(winnerOfRound);
 
 }
 
-function playerChoice() {
+function getPlayerChoice() {
     let input = prompt("Type rock, paper, or scissors.");
     while(input == null){
         input = prompt("Type rock, paper, or scissors.");
@@ -46,37 +46,37 @@ function playerChoice() {
     return input;
 }
 
-function computerChoice(){
+function getComputerChoice(){
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
-function validateInput(x) {
-    if(choices.includes(x)){
+function validateInput(userInput) {
+    if(choices.includes(userInput)){
         return true;
     }else{
         return false;
     }    
 }
 
-function roundWinner(choiceP, choiceC ){
+function getWinnerOfRound(choiceP, choiceC ){
     if(choiceP == choiceC){
-        winner = "Tie"
+        winnerOfRound = "Tie"
     }else if(choiceP == "rock" && choiceC == "scissors" ||
             choiceP == "paper" && choiceC == "rock" ||
             choiceP == "scissors" && choiceC == "paper"){
-            winner = "Player"
+            winnerOfRound = "Player"
     }else{
-        winner = "Computer";
+        winnerOfRound = "Computer";
     }
-    return winner;
+    return winnerOfRound;
 }
 
-function results(x){
-    if(x == "Tie"){
-        tieScore.push(x)
-    }else if(x == "Player"){
-        playerScore.push(x);
+function getGameResults(resultFromRound){
+    if(resultFromRound == "Tie"){
+        tieScore.push(resultFromRound)
+    }else if(resultFromRound == "Player"){
+        playerScore.push(resultFromRound);
     }else{
-        compScore.push(x);
+        compScore.push(resultFromRound);
     }
 }
