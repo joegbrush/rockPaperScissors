@@ -10,7 +10,9 @@
     <body>
         <div class="flex-container">
             <h1>Rock Paper Scissors</h1>
-            <button onclick="gamePlay()">Start Game</button>
+            <button value="rock" onclick="gamePlay(this.value)" id="playerChoiceBtn">Rock</button>
+            <button value="paper" onclick="gamePlay(this.value)" id="playerChoiceBtn">Paper</button>
+            <button value="scissors" onclick="gamePlay(this.value)" id="playerChoiceBtn">Scissors</button>
         </div>    
     </body>
     <script src="/Users/joebrush/repos/rockPaperScissors/rps.js"></script>
