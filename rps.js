@@ -7,26 +7,23 @@ let compScore = [];
 let tieScore = [];
 
 function gamePlay(playerChoiceFromBtn) {
-  getplayerChoiceBtn(playerChoiceFromBtn);
-  console.log(playerSelection);
-  showPlayerChoice();
-
-  // playOneRound();
-
-  // Temporarily removed 5 round limit while developing UI
-  // for (let i = 1; i < 6; i++) {
-  //   playOneRound();
-  // }
-  // console.log(`Player score: ${playerScoreTotal.length}`);
-  // console.log(`Computer score: ${compScore.length}`);
-  // console.log(`Tie: ${tieScore.length}`);
-  // let totalGames = tieScore.length + playerScoreTotal.length + compScore.length;
-  // console.log(`Total games: ${totalGames}`);
+  for (let i = 1; i < 6; i++) {
+    alert("Make your move");
+    getplayerChoiceBtn(playerChoiceFromBtn);
+    showPlayerChoice();
+    playOneRound();
+    playerSelection = null;
+  }
+  console.log(`Player score: ${playerScoreTotal.length}`);
+  console.log(`Computer score: ${compScore.length}`);
+  console.log(`Tie: ${tieScore.length}`);
+  let totalGames = tieScore.length + playerScoreTotal.length + compScore.length;
+  console.log(`Total games: ${totalGames}`);
 }
 
 function playOneRound() {
   const compSelection = getComputerChoice();
-  console.log(compSelection);
+  showCpuChoice();
   getWinnerOfRound(playerSelection, compSelection);
   console.log(winnerOfRound);
   getGameResults(winnerOfRound);
@@ -104,7 +101,13 @@ function getGameResults(resultFromRound) {
 
 //Display player selection in DOM
 function showPlayerChoice() {
-  const newDiv = document.createElement("div");
-  document.body.appendChild(newDiv);
-  newDiv.textContent = `Player chose ${playerSelection}.`;
+  const showPlayerDiv = document.createElement("div");
+  document.body.appendChild(showPlayerDiv);
+  showPlayerDiv.textContent = `Player chose ${playerSelection}.`;
+}
+
+function showCpuChoice() {
+  const showCpuDiv = document.createElement("div");
+  document.body.appendChild(showCpuDiv);
+  showCpuDiv.textContent = `Computer chose ${getComputerChoice()}.`;
 }
