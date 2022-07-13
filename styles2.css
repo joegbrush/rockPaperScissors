@@ -1,0 +1,61 @@
+body {
+  background-color: #333;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+}
+
+.rock,
+.paper,
+.scissors {
+  font-size: 5rem;
+  background-color: #333;
+  border: none;
+  margin: 2rem;
+  transition: 150ms;
+}
+
+.rock:hover,
+.paper:hover,
+.scissors:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.scores {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* justify-content: center;
+  align-items: center; */
+  color: aliceblue;
+}
+
+.scores span {
+  margin-left: 1rem;
+}
+
+.youScore,
+.compScore {
+  justify-self: center;
+  margin: 2.5rem;
+  font-size: 3rem;
+}
+
+.currentMove {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.result {
+  justify-self: center;
+  margin: 4.5rem;
+  font-size: 3.5rem;
+}
+
+.loser {
+  opacity: 0.6;
+  font-size: 3rem;
+}
