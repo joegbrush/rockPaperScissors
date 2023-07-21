@@ -36,8 +36,18 @@ console.log("Player wins round")
       console.log("Computer wins round")
    }
 
- console.log("Player score is " +playerScore)
- console.log("Computer score is " +computerScore)
+ if(roundCount === 5){
+    showFinalResult()
+ }
+ if(roundCount < 5){
+    playRound()
+ }
 }
 
-console.log(playRound())
+function showFinalResult(){
+    if(playerScore > computerScore){console.log("Player wins the game!")}
+    if(playerScore < computerScore){console.log("Computer wins the game.")}
+    if(playerScore == computerScore){console.log("This game is a Tie.")}
+}
+
+playRound()
