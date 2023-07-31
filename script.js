@@ -3,10 +3,10 @@ let computerScore = 0;
 let roundCount = 0;
 
 //Get player choice
-function playerChoice() {
-  let playerSelection = prompt("Choose Rock, Paper, or Scissors.");
-  return playerSelection.toLowerCase();
-}
+// function playerChoice() {
+//   let playerSelection = prompt("Choose Rock, Paper, or Scissors.");
+//   return playerSelection.toLowerCase();
+// }
 //Get computer choice
 function computerChoice() {
   let computerSelection = Math.floor(Math.random() * 100);
