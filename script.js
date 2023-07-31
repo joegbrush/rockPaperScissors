@@ -16,8 +16,8 @@ function computerChoice() {
 }
 
 //Play a round
-function playRound() {
-  let player = playerChoice();
+function playRound(playerChoice) {
+  let player = playerChoice;
   let cpu = computerChoice();
   // roundCount++
   if (player === cpu) return "Tie!";
