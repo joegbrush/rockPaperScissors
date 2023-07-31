@@ -19,15 +19,22 @@ function computerChoice() {
 function playRound(playerChoice) {
   let player = playerChoice;
   let cpu = computerChoice();
-  // roundCount++
-  if (player === cpu) return "Tie!";
+  const resultDiv = document.getElementById("result");
+
+  if (player === cpu) {
+    const resultElement = document.createElement("p");
+    resultDiv.textContent += "Tie." + "\n";
+    resultDiv.appendChild(resultElement);
+  }
   if (
     (player === "rock" && cpu === "scissors") ||
     (player === "paper" && cpu === "rock") ||
     (player === "scissors" && cpu === "paper")
   ) {
     playerScore++;
-    console.log("Player wins round");
+    const resultElement = document.createElement("p");
+    resultDiv.textContent += "Player wins!." + "\n";
+    resultDiv.appendChild(resultElement);
   }
   if (
     (cpu === "rock" && player === "scissors") ||
@@ -35,7 +42,9 @@ function playRound(playerChoice) {
     (cpu === "scissors" && player === "paper")
   ) {
     computerScore++;
-    console.log("Computer wins round");
+    const resultElement = document.createElement("p");
+    resultDiv.textContent += "Computer wins." + "\n";
+    resultDiv.appendChild(resultElement);
   }
 
   //  if(roundCount === 5){
