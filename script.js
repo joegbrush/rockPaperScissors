@@ -23,8 +23,8 @@ function playRound(playerChoice) {
 
   if (player === cpu) {
     const resultElement = document.createElement("p");
-    resultDiv.textContent += "Tie." + "\n";
-    resultDiv.appendChild(resultElement);
+    resultElement.textContent += "Tie." + "\n";
+    resultDiv.insertBefore(resultElement, resultDiv.firstChild);
   }
   if (
     (player === "rock" && cpu === "scissors") ||
@@ -33,8 +33,8 @@ function playRound(playerChoice) {
   ) {
     playerScore++;
     const resultElement = document.createElement("p");
-    resultDiv.textContent += "Player wins!." + "\n";
-    resultDiv.appendChild(resultElement);
+    resultElement.textContent += "Player wins!" + "\n";
+    resultDiv.insertBefore(resultElement, resultDiv.firstChild);
   }
   if (
     (cpu === "rock" && player === "scissors") ||
@@ -43,8 +43,8 @@ function playRound(playerChoice) {
   ) {
     computerScore++;
     const resultElement = document.createElement("p");
-    resultDiv.textContent += "Computer wins." + "\n";
-    resultDiv.appendChild(resultElement);
+    resultElement.textContent += "Computer wins." + "\n";
+    resultDiv.insertBefore(resultElement, resultDiv.firstChild);
   }
 
   //  if(roundCount === 5){

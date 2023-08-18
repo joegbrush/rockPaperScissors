@@ -1,8 +1,10 @@
 #result {
     margin-top: 10px;
-    display: block;
+    display: grid;
+    grid-template-columns: 100px;
 }
 
 #result p {
     margin: 5px 0;
+    background-color: aqua;
 }
